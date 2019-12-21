@@ -110,7 +110,6 @@ public class SignUpFragment extends Fragment {
                     hashMap.put("password", password);
                     hashMap.put("avatarURL", "default");
                     hashMap.put("status", "Have a good day :)");
-                    //hashMap.put("onoroff","online");
 
                     referenceFromOnline = FirebaseDatabase.getInstance().getReference("Status").child(userID);
 

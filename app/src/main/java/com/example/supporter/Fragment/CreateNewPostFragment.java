@@ -1,4 +1,4 @@
-package com.example.supporter;
+package com.example.supporter.Fragment;
 
 
 import android.Manifest;
@@ -32,6 +32,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.supporter.Other.User;
+import com.example.supporter.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;

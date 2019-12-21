@@ -1,4 +1,4 @@
-package com.example.supporter;
+package com.example.supporter.Fragment;
 
 
 import android.os.Bundle;
@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.supporter.Adapter.PostAdapter;
 import com.example.supporter.Other.Post;
 import com.example.supporter.Other.User;
+import com.example.supporter.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -141,7 +142,7 @@ public class NewsFragment extends Fragment {
         view.findViewById(R.id.text_view_new_post).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navController.navigate(R.id.action_menu_news_to_createNewPostFragment);
+                navController.navigate(R.id.action_menu_news_to_createNewPostFragment2);
             }
         });
 
