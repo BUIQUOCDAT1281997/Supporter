@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Supporter</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_in">sign in</string>
+    <string name="sign_up">sign up</string>
+    <string name="textView_login">Login to your account</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password"><i>Forgot password ?</i></string>
+    <string name="log_in">Log in</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="create">create</string>
+    <string name="user_name">User Name</string>
+    <string name="status">Status</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="your_account">Your Account</string>
+    <string name="log_out">Log out</string>
+    <string name="search">Search</string>
+    <string name="seen">Seen</string>
+    <string name="not_seen">wait</string>
+    <string name="Authentication_failed">Authentication failed</string>
+    <string name="All_fields_are_required">All fields are required</string>
+    <string name="please_wait">Please wait ...</string>
+    <string name="aa">Aa...</string>
+    <string name="hi">hi</string>
+    <string name="you_want_to_log_out">Are you sure you want to log out ?</string>
+    <string name="time">time</string>
+</resources>
