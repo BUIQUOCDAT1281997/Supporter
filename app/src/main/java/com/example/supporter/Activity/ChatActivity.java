@@ -1,7 +1,6 @@
 package com.example.supporter.Activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -142,8 +141,6 @@ public class ChatActivity extends AppCompatActivity {
         hashMap.put("isSeen", "false");
         reference.child("Chats").push().setValue(hashMap);
 
-        // gui neu khong co mang addOnComplete
-
         final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ChatList")
                 .child(firebaseUser.getUid())
                 .child(userIDFriend);
@@ -232,8 +229,6 @@ public class ChatActivity extends AppCompatActivity {
         super.onResume();
         setOnOff("online");
 
-        //notification
-        setCurrentUser(userIDFriend);
     }
 
     @Override
@@ -248,14 +243,6 @@ public class ChatActivity extends AppCompatActivity {
         referenceFromChats.removeEventListener(eventListener);
         setOnOff("offline");
 
-        //notification
-        setCurrentUser("default");
     }
 
-    //notification
-    private void setCurrentUser(String user) {
-        SharedPreferences.Editor editor = getSharedPreferences("Preferences_Shared", MODE_PRIVATE).edit();
-        editor.putString("currentUser", user);
-        editor.apply();
-    }
 }

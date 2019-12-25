@@ -11,10 +11,8 @@
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" >
         <action
-            android:id="@+id/action_menu_setting_to_menu_news3"
-            app:destination="@id/menu_news"
-            app:popUpTo="@+id/menu_news"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_menu_setting_to_menu_friends"
+            app:destination="@id/menu_friends" />
     </fragment>
     <fragment
         android:id="@+id/menu_news"
@@ -22,11 +20,11 @@
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" >
         <action
-            android:id="@+id/action_menu_news_to_menu_setting"
-            app:destination="@id/menu_setting" />
-        <action
             android:id="@+id/action_menu_news_to_createNewPostFragment2"
             app:destination="@id/createNewPostFragment" />
+        <action
+            android:id="@+id/action_menu_news_to_menu_friends"
+            app:destination="@id/menu_friends" />
     </fragment>
     <fragment
         android:id="@+id/createNewPostFragment"
@@ -38,5 +36,17 @@
             app:destination="@id/menu_news"
             app:popUpTo="@+id/menu_news"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/menu_friends"
+        android:name="com.example.supporter.Fragment.FriendsFragment"
+        android:label="fragment_friends"
+        tools:layout="@layout/fragment_friends" >
+        <action
+            android:id="@+id/action_menu_friends_to_menu_news"
+            app:destination="@id/menu_news" />
+        <action
+            android:id="@+id/action_menu_friends_to_menu_setting"
+            app:destination="@id/menu_setting" />
     </fragment>
 </navigation>
