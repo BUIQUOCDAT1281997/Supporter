@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -65,6 +66,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             holder.tvSeen.setVisibility(View.GONE);
         }
 
+        if (!chat.getPicture().equals("default")){
+            holder.pictureContent.setVisibility(View.VISIBLE);
+            Glide.with(context).load(chat.getPicture()).into(holder.pictureContent);
+        }
+
     }
 
     @Override
@@ -77,12 +83,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         CircleImageView circleImageView;
         TextView textView;
         TextView tvSeen;
+        ImageView pictureContent;
 
         MessageViewHolder(@NonNull View itemView) {
             super(itemView);
             circleImageView = itemView.findViewById(R.id.circle_view_item_chat);
             textView = itemView.findViewById(R.id.textView_item_chat);
             tvSeen = itemView.findViewById(R.id.tv_seen);
+            pictureContent = itemView.findViewById(R.id.image_content);
         }
     }
 

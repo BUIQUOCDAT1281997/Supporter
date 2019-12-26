@@ -12,50 +12,49 @@
         android:visibility="gone"
         layout="@layout/progress_bar"/>
 
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-        <LinearLayout
+        <ImageView
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:id="@+id/profile_image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_user"
+            />
+
+
+        <TextView
+            android:id="@+id/account_user_name"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:text="@string/user_name" />
 
-            <ImageView
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:id="@+id/profile_image"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/ic_user"
-                />
+        <TextView
+            android:id="@+id/account_status"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/status" />
 
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/account_user_name"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/user_name" />
-
-            <TextView
-                android:id="@+id/account_status"
-                android:gravity="center"
-                android:textStyle="italic"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/status" />
-
-        </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_my_post"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
-
-    </ScrollView>
 </LinearLayout>

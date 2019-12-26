@@ -124,7 +124,7 @@ public class NewsFragment extends Fragment {
                     }
                 }
                 Collections.reverse(listData);
-                postAdapter = new PostAdapter(listData, getContext());
+                postAdapter = new PostAdapter(listData, getContext(), false);
                 recyclerView.setAdapter(postAdapter);
             }
 

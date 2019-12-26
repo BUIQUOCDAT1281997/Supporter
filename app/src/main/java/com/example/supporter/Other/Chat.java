@@ -5,12 +5,14 @@ public class Chat {
     private String receiver;
     private String message;
     private String isSeen;
+    private String picture;
 
-    public Chat(String sender, String receiver, String message, String isSeen) {
+    public Chat(String sender, String receiver, String message, String isSeen, String picture) {
         this.sender = sender;
         this.receiver = receiver;
         this.message = message;
         this.isSeen = isSeen;
+        this.picture = picture;
     }
 
     public Chat(){
@@ -49,4 +51,11 @@ public class Chat {
         this.message = message;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 }

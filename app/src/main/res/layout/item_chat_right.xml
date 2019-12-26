@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/textView_item_chat"
@@ -17,7 +17,6 @@
         android:background="@drawable/rounded_border_edittext"
         android:maxWidth="250dp"
         android:padding="7dp"
-        android:text="@string/hi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.99"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,13 +26,30 @@
         android:id="@+id/tv_seen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:paddingRight="2dp"
         android:text="@string/seen"
-        android:textStyle="italic"
         android:textSize="10sp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_item_chat" />
+        app:layout_constraintTop_toBottomOf="@+id/image_content" />
+
+    <ImageView
+        android:id="@+id/image_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/rounded_border_edittext"
+        android:padding="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/textView_item_chat"
+        app:srcCompat="@drawable/ic_insert_photo_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

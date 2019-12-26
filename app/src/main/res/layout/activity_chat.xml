@@ -54,6 +54,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+
+        <ImageView
+            android:id="@+id/tv_add_picture"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_insert_photo_black_24dp"
+            tools:ignore="VectorDrawableCompat" />
+
         <EditText
             android:id="@+id/text_send"
             android:layout_width="0dp"
@@ -71,7 +81,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/ic_send" />
+            android:src="@drawable/ic_send_new" />
 
     </LinearLayout>
 
@@ -80,9 +90,20 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:paddingBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/picture_selected"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+    <ImageView
+        android:id="@+id/picture_selected"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="8dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

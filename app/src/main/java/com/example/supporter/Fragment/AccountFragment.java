@@ -22,8 +22,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.supporter.Adapter.PostAdapter;
+import com.example.supporter.Other.Post;
 import com.example.supporter.Other.User;
 import com.example.supporter.R;
 import com.google.android.gms.tasks.Continuation;
@@ -42,7 +46,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -54,10 +61,13 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 2019;
     //views
-    private View rootView;
     private TextView tvUserName, tvStatus;
     private ImageView imgUser;
     private LinearLayout llProgressBar;
+
+    private RecyclerView recyclerView;
+    private View rootView;
+    private PostAdapter postAdapter;
 
     //storage
     private StorageReference mStorageRef;
@@ -70,6 +80,10 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     //Firebase
     private FirebaseUser firebaseUser;
     private DatabaseReference reference;
+    private DatabaseReference referenceFromPosts;
+
+    //Posts
+    private List<Post> listData;
 
 
     @Override
@@ -105,8 +119,13 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+        listData = new ArrayList<>();
+        readMyPosts();
+
         return rootView;
     }
+
+
 
 
     private void initView(View view) {
@@ -116,10 +135,17 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         imgUser = view.findViewById(R.id.profile_image);
         llProgressBar = view.findViewById(R.id.llProgressBar);
 
+        //recyclerView
+        recyclerView = view.findViewById(R.id.recycler_view_my_post);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
         //Firebase
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads").child(firebaseUser.getUid());
+        referenceFromPosts = FirebaseDatabase.getInstance().getReference("Posts");
     }
 
 
@@ -295,4 +321,32 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAMERA);
     }
+
+
+    private void readMyPosts() {
+        listData.clear();
+
+        referenceFromPosts.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listData.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Post post = snapshot.getValue(Post.class);
+                    if ((post.getId().equals(firebaseUser.getUid()))){
+                        listData.add(post);
+                    }
+                }
+                Collections.reverse(listData);
+                postAdapter = new PostAdapter(listData, getContext(), true);
+                recyclerView.setAdapter(postAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
 }

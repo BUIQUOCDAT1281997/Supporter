@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide;
 import com.example.supporter.Activity.ChatActivity;
 import com.example.supporter.Other.Post;
 import com.example.supporter.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -25,10 +27,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     private List<Post> listData;
     private Context mContext;
+    private boolean isMyPosts;
 
-    public PostAdapter(List<Post> listData, Context mContext) {
+    public PostAdapter(List<Post> listData, Context mContext, boolean isMyPosts) {
         this.listData = listData;
         this.mContext = mContext;
+        this.isMyPosts = isMyPosts;
     }
 
     @NonNull
@@ -58,14 +62,28 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.tvTime.setText(post.getTime());
         holder.tvContent.setText(post.getContentPost());
 
-        holder.btSupport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(mContext, ChatActivity.class);
-                intent.putExtra("userID", post.getId());
-                mContext.startActivity(intent);
-            }
-        });
+        if (isMyPosts){
+            holder.btSupport.setText("Delete");
+            holder.btSupport.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Posts").child(post.getCurrentTime());
+                    databaseReference.removeValue();
+                }
+            });
+        }else {
+            holder.btSupport.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(mContext, ChatActivity.class);
+                    intent.putExtra("userID", post.getId());
+                    mContext.startActivity(intent);
+                }
+            });
+        }
+
+
+
 
     }
 

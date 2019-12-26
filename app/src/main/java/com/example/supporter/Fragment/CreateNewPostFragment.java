@@ -85,6 +85,7 @@ public class CreateNewPostFragment extends Fragment implements View.OnClickListe
 
     private String stringUserName;
     private String stringImageURL;
+    private String currentTime;
 
 
 
@@ -131,7 +132,8 @@ public class CreateNewPostFragment extends Fragment implements View.OnClickListe
 
     private void initFireBase() {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Posts").child(String.valueOf(System.currentTimeMillis()));
+        currentTime = String.valueOf(System.currentTimeMillis());
+        reference = FirebaseDatabase.getInstance().getReference("Posts").child(currentTime);
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads").child(firebaseUser.getUid());
     }
 
@@ -165,6 +167,7 @@ public class CreateNewPostFragment extends Fragment implements View.OnClickListe
 
         final HashMap<String, Object> hashMap = new HashMap<>();
 
+        hashMap.put("currentTime",currentTime);
         hashMap.put("userName",stringUserName);
         hashMap.put("imageURL",stringImageURL);
         hashMap.put("id",firebaseUser.getUid());

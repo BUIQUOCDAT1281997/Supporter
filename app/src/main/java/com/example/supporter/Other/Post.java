@@ -8,14 +8,16 @@ public class Post {
     private String contentPost;
     private String picturePost;
     private String id;
+    private String currentTime;
 
-    public Post(String userName, String imageURL, String time, String contentPost, String picturePost, String id) {
+    public Post(String userName, String imageURL, String time, String contentPost, String picturePost, String id, String currentTime) {
         this.userName = userName;
         this.imageURL = imageURL;
         this.time = time;
         this.contentPost = contentPost;
         this.picturePost = picturePost;
         this.id = id;
+        this.currentTime = currentTime;
     }
 
     public Post() {
@@ -67,5 +69,13 @@ public class Post {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCurrentTime() {
+        return currentTime;
+    }
+
+    public void setCurrentTime(String currentTime) {
+        this.currentTime = currentTime;
     }
 }
